@@ -1,0 +1,38 @@
+# params for sensor model dataset generation
+
+#orientation params
+min_theta: 0.0 #min theta we want to look at the target from (radians)
+max_theta: 6.2831 #max theta we want to look at the target from (radians)
+
+#range params
+min_range: 10 # min dist from target (meters)
+max_range: 1000 # max dist from target (meters)
+range_step: 10.0 # step size for dist from target (meters)
+
+#viewing point params
+base_min_ratio: 0.05 #min ratio between the base and height of our "viewing" point triangle
+base_max_ratio: 0.95 #max ratio between the base and height of our "viewing" point triangle
+base_ratio_step: 0.05 #step size for ratio between base and height of our "viewing" point triangle
+
+#noise generation params
+x_offset_ratio: 0.4 #ratio for amount of noise we sample from in +/- x direction for the target pose (wrt distance of "viewing" point base)
+y_offset_ratio: 0.4 #ratio for amount of noise we sample from in +/- y direction for the target pose (wrt distance of "viewing" point base)
+
+#ship params
+ship_x: 300 #x position of target in isaac sim (meters)
+ship_y: -700.0 #y position of target in isaac sim (meters)
+ship_z: 0.0 #z position of target in Isaac sim (meters)
+ship_yaw: 0.0 #yaw of target in Isaac sim (radians)
+
+#image generation params
+dt: 0.5 #time threshold for generating new image (seconds)
+max_positive_images: 3000 #number of positive images we want
+max_negative_images: 2000 #number of negative images we want
+
+#ros params
+camera_frame: "sim_camera" #tf frame for image
+image_topic: "/rgb" #topic for image publisher
+image_info_topic: "/rgb_info" #topic for camera info publisher
+image_type_topic: "/image_type" #topic for type of image being published
+start_topic: "/start_image_gen" #topic for listening for start of image genderation image
+dist_topic: "/dist_from_ship" #topic for publishing the distance away from the ship (synced with image generation)
