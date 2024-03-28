@@ -60,6 +60,17 @@ class GenSensorModel(object):
         cudnn.benchmark = True
         self.model.warmup(imgsz=(1 if self.pt else bs, 3, *self.img_size), half=self.half)
 
+    def scale_coords(img_shape, coords, img0_shape):
+        # Rescale coords (xyxy) from img_shape to img0_shape
+        gain = min(img_shape[0] / img0_shape[0], img_shape[1] / img0_shape[1])
+        pad = ((img_shape[1] - img0_shape[1] * gain) / 2, (img_shape[0] - img0_shape[0] * gain) / 2)
+        coords[:, [0, 2]] -= pad[0]  # x padding
+        coords[:, [1, 3]] -= pad[1]  # y padding
+        coords[:, :4] /= gain
+        coords[:, :4] = np.clip(coords[:, :4], 0, img0_shape[1])
+        return coords
+
+
     def run_model(self, im):
         im, im0 = self.preprocess(im)
         xyxy_return = []
