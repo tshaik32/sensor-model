@@ -12,15 +12,15 @@ import os
 import yaml
 
 # Import necessary modules from yolov5 repository (if not already imported)
-from models.common import DetectMultiBackend
-from utils.general import (
+from yolov5.utils.general import (
     check_img_size,
     non_max_suppression,
     scale_coords
 )
-from utils.plots import Annotator, colors
-from utils.torch_utils import select_device
-from utils.augmentations import letterbox
+from yolov5.utils.plots import Annotator, colors
+from yolov5.utils.torch_utils import select_device
+from yolov5.utils.augmentations import letterbox
+from yolov5.models.common import DetectMultiBackend
 
 class GenSensorModel(object):
     def __init__(self):
