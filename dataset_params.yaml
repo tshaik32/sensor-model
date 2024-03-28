@@ -36,3 +36,13 @@ image_info_topic: "/rgb_info" #topic for camera info publisher
 image_type_topic: "/image_type" #topic for type of image being published
 start_topic: "/start_image_gen" #topic for listening for start of image genderation image
 dist_topic: "/dist_from_ship" #topic for publishing the distance away from the ship (synced with image generation)
+
+#model parameters
+confidence_threshold: 0.5 #confidence threshold for model
+iou_threshold: 0.5 #iou threshold for model
+agnostic_nms: False #whether to use agnostic nms for model
+maximum_detections: 100 #maximum number of detections for model
+line_thickness: 2 #thickness of bounding box lines for model
+device: "cuda" #device for model
+inference_size: 416 #size of image for model
+half: False #whether to use half precision for model

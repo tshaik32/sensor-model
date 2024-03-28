@@ -14,8 +14,7 @@ import yaml
 # Import necessary modules from yolov5 repository (if not already imported)
 from yolov5.utils.general import (
     check_img_size,
-    non_max_suppression,
-    scale_coords
+    non_max_suppression
 )
 from yolov5.utils.plots import Annotator, colors
 from yolov5.utils.torch_utils import select_device
@@ -25,7 +24,7 @@ from yolov5.models.common import DetectMultiBackend
 class GenSensorModel(object):
     def __init__(self):
         # Load model parameters from configuration file
-        with open("../dataset_params.yaml", "r") as stream:
+        with open("dataset_params.yaml", "r") as stream:
             model_params = yaml.safe_load(stream)
 
         # Initialize model parameters
